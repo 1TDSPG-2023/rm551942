@@ -28,17 +28,29 @@ addEventListener("click", (evt)=>{
         const inputUser = document.querySelector("#idUser");
         const inputPass = document.querySelector("#idPass");
         
-        listaDeUsuarios.forEach((usuario)=>{
+        try {
+            
+            listaDeUsuarios.forEach((usuario)=>{
+                
+                if(inputUser.value == usuario.nomeUsuario && inputPass.value == usuario.senhaUsuario){
+                    throw "VALIDADO";
+                }
+            });
+            
+            throw "NÃO VALIDADO";
 
-            if(inputUser.value == usuario.nomeUsuario && inputPass.value == usuario.senhaUsuario){
-                console.log("VALIDADO");
+        } catch (msg) {
+            const msgError = document.querySelector("#msgError");
+            if(msg == "VALIDADO"){
+                msgError.setAttribute("style","color:#00ff00;");
+                msgError.innerHTML = "<span><strong>Login efetuado com Sucesso!</strong></span>";
             }else{
-                console.log("NÃO VALIDADO");
+                msgError.setAttribute("style","color:#ff0000;");
+                msgError.innerHTML = "<span><strong>Usuário ou senha inválidos!</strong></span>";
             }
+        }
 
-        });
+
+
     }
-
-
-    
 });
