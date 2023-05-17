@@ -61,6 +61,9 @@ addEventListener("click", (evt)=>{
             if(msg == "VALIDADO"){
                 msgError.setAttribute("style","color:#00ff00;");
                 msgError.innerHTML = "<span><strong>Login efetuado com Sucesso!</strong></span>";
+                setTimeout( function(){
+                    window.location.href = "../pages/sucesso.html";
+                }, 3000);
             }else{
                 msgError.setAttribute("style","color:#ff0000;");
                 msgError.innerHTML = "<span><strong>Usuário ou senha inválidos!</strong></span>";
