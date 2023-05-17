@@ -22,11 +22,10 @@ listaDeUsuarios.push(usuario1);
 listaDeUsuarios.push(usuario2);
 
 addEventListener("click", (evt)=>{
+    const inputUser = document.querySelector("#idUser");
+    const inputPass = document.querySelector("#idPass");
 
     if(evt.target.id == "btnSubmit"){
-        
-        const inputUser = document.querySelector("#idUser");
-        const inputPass = document.querySelector("#idPass");
         
         try {
             
@@ -50,7 +49,16 @@ addEventListener("click", (evt)=>{
             }
         }
 
-
-
+    }else if(evt.target.className == "fa fa-eye" || evt.target.className == "fa fa-eye-slash"){
+        //Mostrando a senha!
+        if(inputPass.getAttribute("type") == "password"){
+            evt.target.setAttribute("class","fa fa-eye-slash");
+            inputPass.setAttribute("type","text");
+        }else{
+        //Ocultando a senha!
+        evt.target.setAttribute("class","fa fa-eye");
+            inputPass.setAttribute("type","password");
+        }
+        
     }
 });
